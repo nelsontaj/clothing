@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.addItem = exports.toggleCartHidden = void 0;
+exports.clearItemFromCart = exports.removeItem = exports.addItem = exports.toggleCartHidden = void 0;
 
 var _cart = _interopRequireDefault(require("./cart.types"));
 
@@ -25,3 +25,21 @@ var addItem = function addItem(item) {
 };
 
 exports.addItem = addItem;
+
+var removeItem = function removeItem(item) {
+  return {
+    type: _cart["default"].REMOVE_ITEM,
+    payload: item
+  };
+};
+
+exports.removeItem = removeItem;
+
+var clearItemFromCart = function clearItemFromCart(item) {
+  return {
+    type: _cart["default"].CLEAR_ITEM_FROM_CART,
+    payload: item
+  };
+};
+
+exports.clearItemFromCart = clearItemFromCart;

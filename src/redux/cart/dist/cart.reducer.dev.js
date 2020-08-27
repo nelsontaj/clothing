@@ -37,6 +37,18 @@ var cartReducer = function cartReducer() {
         cartItems: (0, _cart2.addItemToCart)(state.cartItems, action.payload)
       });
 
+    case _cart["default"].REMOVE_ITEM:
+      return _objectSpread({}, state, {
+        cartItems: (0, _cart2.removeItemFromCart)(state.cartItems, action.payload)
+      });
+
+    case _cart["default"].CLEAR_ITEM_FROM_CART:
+      return _objectSpread({}, state, {
+        cartItems: state.cartItems.filter(function (cartItem) {
+          return cartItem.id === action.payload.id;
+        })
+      });
+
     default:
       return state;
   }

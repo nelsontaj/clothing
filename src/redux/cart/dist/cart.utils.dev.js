@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.addItemToCart = void 0;
+exports.removeItemFromCart = exports.addItemToCart = void 0;
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
@@ -38,3 +38,23 @@ var addItemToCart = function addItemToCart(cartItems, cartItemToAdd) {
 };
 
 exports.addItemToCart = addItemToCart;
+
+var removeItemFromCart = function removeItemFromCart(cartItems, cartItemToRemove) {
+  var existingCartItem = cartItems.find(function (cartItem) {
+    return cartItem.id === cartItemToRemove.id;
+  });
+
+  if (existingCartItem.quantity === 1) {
+    return cartItems.filter(function (cartItem) {
+      return cartItem.id === cartItemToRemove.id;
+    });
+  }
+
+  return cartItems.map(function (cartItem) {
+    return cartItem.id === cartItemToRemove.id ? _objectSpread({}, cartItem, {
+      quantity: cartItem.quantity - 1
+    }) : cartItem;
+  });
+};
+
+exports.removeItemFromCart = removeItemFromCart;
